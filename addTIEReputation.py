@@ -46,7 +46,7 @@ def whitelistLoop():
     sha256input = ""
     for root, dirs, files in os.walk(dir_to_whitelist):
         for file in files:
-            if file.endswith(".exe") | file.endswith(".dll"):
+            if file.endswith(".EXE") | file.endswith(".DLL"):
                 filename = root + "\\" + file
                 try:
                     sha1input = hashlib.sha1(open(filename, 'rb').read()).hexdigest()
@@ -75,7 +75,7 @@ def blacklistLoop():
     sha256input = ""
     for root, dirs, files in os.walk(dir_to_blacklist):
         for file in files:
-            if file.endswith(".exe") | file.endswith(".dll"):
+            if file.endswith(".EXE") | file.endswith(".DLL"):
                 filename = root + "\\" + file
                 try:
                     sha1input = hashlib.sha1(open(filename, 'rb').read()).hexdigest()
