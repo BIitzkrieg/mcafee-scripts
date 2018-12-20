@@ -23,7 +23,7 @@ dir_to_blacklist = "C:\\Users\\user1\\Desktop\\blacklist"
 # This is the default Reputation Score written to the TIE Database
 reputationWhite = '99'
 reputationBlack = '1'
-
+#testing git push to repo
 
 # Possible Reputation Values (You must provide a numeric value)
 # Known Trusted Installer   100
