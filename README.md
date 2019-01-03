@@ -1,5 +1,5 @@
 # mcafee-scripts
-Scripts to interact with the McAfee API. Credit to Troja from the McAfee community for the original code. I simply modified it for my use case.  
+Scripts to interact with the McAfee ePO Web API. Credit to Troja from the McAfee community for the original code. I simply modified it for my use case.  
 
 ## How to use addTIEReputation.py  
 Edit the script with your respective ePO server IP and credentials. Customize the "dir_to_whitelist" and "dir_to_blacklist" directories as needed.  
