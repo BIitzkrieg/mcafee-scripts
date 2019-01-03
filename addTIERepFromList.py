@@ -10,6 +10,7 @@ import time
 import socket
 import os
 import json
+import re
 
 # ip or fqdn
 ePOIP = ''
@@ -23,7 +24,6 @@ dir_to_blacklist = "C:\\Users\\user1\\Desktop\\blacklist"
 # This is the default Reputation Score written to the TIE Database
 reputationWhite = '99'
 reputationBlack = '1'
-#testing git push to repo
 
 # Possible Reputation Values (You must provide a numeric value)
 # Known Trusted Installer   100
@@ -44,22 +44,22 @@ def whitelistLoop():
     contents = f.read()
     file_as_list = contents.splitlines()
     for line in file_as_list:
-        if len(line) == 32:
+        if re.match(r"^([a-fA-F\d]{32}$)", line):
             try:
                 md5base64 = base64.b64encode(line.decode('hex'))
-            except IOError as e:
+            except IOError:
                 print("Unable to open file")
                 sys.exc_clear()
-        elif len(line) == 40:
+        elif re.match(r"^([a-fA-F\d]{40}$)", line):
             try:
                 sha1base64 = base64.b64encode(line.decode('hex'))
-            except IOError as e:
+            except IOError:
                 print("Unable to open file")
                 sys.exc_clear()
-        elif len(line) == 64:
+        elif re.match(r"^([a-fA-F\d]{64}$)", line):
             try:
                 sha256base64 = base64.b64encode(line.decode('hex'))
-            except IOError as e:
+            except IOError:
                 print("Unable to open file")
                 sys.exc_clear()
         else:
@@ -81,22 +81,22 @@ def blacklistLoop():
     contents = f.read()
     file_as_list = contents.splitlines()
     for line in file_as_list:
-        if len(line) == 32:
+        if re.match(r"^([a-fA-F\d]{32}$)", line):
             try:
                 md5base64 = base64.b64encode(line.decode('hex'))
-            except IOError as e:
+            except IOError:
                 print("Unable to open file")
                 sys.exc_clear()
-        elif len(line) == 40:
+        elif re.match(r"^([a-fA-F\d]{40}$)", line):
             try:
                 sha1base64 = base64.b64encode(line.decode('hex'))
-            except IOError as e:
+            except IOError:
                 print("Unable to open file")
                 sys.exc_clear()
-        elif len(line) == 64:
+        elif re.match(r"^([a-fA-F\d]{64}$)", line):
             try:
                 sha256base64 = base64.b64encode(line.decode('hex'))
-            except IOError as e:
+            except IOError:
                 print("Unable to open file")
                 sys.exc_clear()
         else:
