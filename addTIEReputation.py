@@ -46,14 +46,16 @@ def whitelistLoop():
     sha256input = ""
     for root, dirs, files in os.walk(dir_to_whitelist):
         for file in files:
-            if file.endswith(".EXE") | file.endswith(".DLL"):
-                filename = root + "\\" + file
+            # print(os.path.join(root, file))
+            if file.endswith(".exe") | file.endswith(".dll") | file.endswith(".EXE") | file.endswith(".DLL"):
+                filename = os.path.join(root, file)
+                # filename = root + "\\" + file
                 try:
                     sha1input = hashlib.sha1(open(filename, 'rb').read()).hexdigest()
                     md5input = hashlib.md5(open(filename, 'rb').read()).hexdigest()
                     sha256input = hashlib.sha256(open(filename, 'rb').read()).hexdigest()
-                except IOError as e:
-                    print("Unable to open file")
+                except IOError:
+                    print("Unable to open file for hashing")
                     sys.exc_clear()
 
                 sha1base64 = base64.b64encode(sha1input.decode('hex'))
@@ -73,16 +75,18 @@ def blacklistLoop():
     sha1input = ""
     md5input = ""
     sha256input = ""
-    for root, dirs, files in os.walk(dir_to_blacklist):
+    for root, dirs, files in os.walk(dir_to_whitelist):
         for file in files:
-            if file.endswith(".EXE") | file.endswith(".DLL"):
-                filename = root + "\\" + file
+            # print(os.path.join(root, file))
+            if file.endswith(".exe") | file.endswith(".dll") | file.endswith(".EXE") | file.endswith(".DLL"):
+                filename = os.path.join(root, file)
+                # filename = root + "\\" + file
                 try:
                     sha1input = hashlib.sha1(open(filename, 'rb').read()).hexdigest()
                     md5input = hashlib.md5(open(filename, 'rb').read()).hexdigest()
                     sha256input = hashlib.sha256(open(filename, 'rb').read()).hexdigest()
-                except IOError as e:
-                    print("Unable to open file")
+                except IOError:
+                    print("Unable to open file for hashing")
                     sys.exc_clear()
 
                 sha1base64 = base64.b64encode(sha1input.decode('hex'))
