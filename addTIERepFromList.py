@@ -45,25 +45,16 @@ def whitelistLoop():
     file_as_list = contents.splitlines()
     for line in file_as_list:
         if re.match(r"^([a-fA-F\d]{32}$)", line):
-            try:
-                md5base64 = base64.b64encode(line.decode('hex'))
-            except IOError:
-                print("Unable to open file")
-                sys.exc_clear()
+            md5base64 = base64.b64encode(line.decode('hex'))
+
         elif re.match(r"^([a-fA-F\d]{40}$)", line):
-            try:
-                sha1base64 = base64.b64encode(line.decode('hex'))
-            except IOError:
-                print("Unable to open file")
-                sys.exc_clear()
+            sha1base64 = base64.b64encode(line.decode('hex'))
+
         elif re.match(r"^([a-fA-F\d]{64}$)", line):
-            try:
-                sha256base64 = base64.b64encode(line.decode('hex'))
-            except IOError:
-                print("Unable to open file")
-                sys.exc_clear()
+            sha256base64 = base64.b64encode(line.decode('hex'))
+
         else:
-            print("Script only takes SHA-1, SHA-256, or MD5 hashes")
+            print("Script only takes SHA-1 or MD5 hashes")
 
         mc = mcafee.client(ePOIP, '8443', ePOUser, ePOUserPwd, 'https', 'json')
         PresentTimeDate = time.strftime("%c")
@@ -82,23 +73,14 @@ def blacklistLoop():
     file_as_list = contents.splitlines()
     for line in file_as_list:
         if re.match(r"^([a-fA-F\d]{32}$)", line):
-            try:
-                md5base64 = base64.b64encode(line.decode('hex'))
-            except IOError:
-                print("Unable to open file")
-                sys.exc_clear()
+            md5base64 = base64.b64encode(line.decode('hex'))
+
         elif re.match(r"^([a-fA-F\d]{40}$)", line):
-            try:
-                sha1base64 = base64.b64encode(line.decode('hex'))
-            except IOError:
-                print("Unable to open file")
-                sys.exc_clear()
+            sha1base64 = base64.b64encode(line.decode('hex'))
+
         elif re.match(r"^([a-fA-F\d]{64}$)", line):
-            try:
-                sha256base64 = base64.b64encode(line.decode('hex'))
-            except IOError:
-                print("Unable to open file")
-                sys.exc_clear()
+            sha256base64 = base64.b64encode(line.decode('hex'))
+
         else:
             print("Script only takes SHA-1 or MD5 hashes")
 
