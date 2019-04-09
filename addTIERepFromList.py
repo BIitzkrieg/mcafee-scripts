@@ -54,7 +54,7 @@ def whitelistLoop():
             sha256base64 = base64.b64encode(line.decode('hex'))
 
         else:
-            print("Script only takes SHA-1 or MD5 hashes")
+            print("Script only takes SHA-1, SHA-256, or MD5 hashes")
 
         mc = mcafee.client(ePOIP, '8443', ePOUser, ePOUserPwd, 'https', 'json')
         PresentTimeDate = time.strftime("%c")
@@ -82,7 +82,7 @@ def blacklistLoop():
             sha256base64 = base64.b64encode(line.decode('hex'))
 
         else:
-            print("Script only takes SHA-1 or MD5 hashes")
+            print("Script only takes SHA-1, SHA-256, or MD5 hashes")
 
         mc = mcafee.client(ePOIP, '8443', ePOUser, ePOUserPwd, 'https', 'json')
         PresentTimeDate = time.strftime("%c")
