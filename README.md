@@ -9,5 +9,5 @@ python addTIEReputation.py
 ## How to use addTIERepFromList.py  
 Modify the code as needed, like with addTIEReputation.py  
 Place a hashes.txt file in the repsective directories, that you wish to blacklist or whitelist, one hash per line.  
-The API will accept sha1, sha256, and md5 hashes to be inserted into the TIE database.  
+The API will accept SHA-1, SHA-256, and MD5 hashes to be inserted into the TIE database.  
 python addTIERepFromList.py
